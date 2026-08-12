@@ -374,59 +374,47 @@ nav {
 /* =========================
    CONTACT
 ========================= */
-
-#contactForm {
-    max-width: 550px;
-
-    margin: auto;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 15px;
+/* 1. Prevent padding/borders from breaking width calculations */
+* {
+  box-sizing: border-box;
 }
 
-#contactForm input,
-#contactForm textarea {
-    width: 100%;
-
-    padding: 15px;
-
-    border: 1px solid #1e293b;
-
-    border-radius: 8px;
-
-    background: #0f172a;
-
-    color: white;
-
-    font-size: 16px;
-
-    outline: none;
+/* 2. Main Form Container */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;            /* Spacing between each field */
+  width: 90%;          /* Takes up most of the mobile screen */
+  max-width: 500px;    /* Prevents it from getting too wide on desktop */
+  margin: 0 auto;      /* Centers the form on the page */
 }
 
-#contactForm input:focus,
-#contactForm textarea:focus {
-    border-color: #38bdf8;
+/* 3. Each Label + Input Pair */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
 }
 
-#contactForm textarea {
-    height: 150px;
-
-    resize: none;
+/* 4. Inputs and Textarea Sizing */
+.form-group input,
+.form-group textarea {
+  width: 100%;         /* Forces inputs to fill the container width */
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
-.send-btn {
-    margin-top: 5px;
+/* 5. Button Styling */
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
 }
-
-#formMessage {
-    margin-top: 20px;
-
-    color: #38bdf8;
-}
-
 
 /* =========================
    FOOTER
