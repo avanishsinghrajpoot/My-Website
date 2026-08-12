@@ -792,3 +792,98 @@ if (cursorGlow) {
 console.log(
     "Portfolio JavaScript loaded successfully! ✅"
 );
+/* =========================
+   HACKER TERMINAL
+========================= */
+
+const terminalBody = document.querySelector(".terminal-body");
+
+if (terminalBody) {
+
+    const terminalInput = document.createElement("input");
+
+    terminalInput.type = "text";
+    terminalInput.className = "terminal-input";
+    terminalInput.placeholder = "Type 'help' and press Enter...";
+
+    terminalBody.appendChild(terminalInput);
+
+    terminalInput.addEventListener("keydown", function (event) {
+
+        if (event.key !== "Enter") {
+            return;
+        }
+
+        const command = terminalInput.value
+            .trim()
+            .toLowerCase();
+
+        let output = "";
+
+        switch (command) {
+
+            case "help":
+                output =
+                    "Available commands: about, skills, projects, contact, clear";
+                break;
+
+            case "about":
+                output =
+                    "Avanish Singh — B.Tech CSE (Data Science) Student.";
+                break;
+
+            case "skills":
+                output =
+                    "HTML | CSS | JavaScript | Problem Solving";
+                break;
+
+            case "projects":
+                output =
+                    "My First Website | Calculator | Rock Paper Scissors";
+                break;
+
+            case "contact":
+                output =
+                    "Scroll down to the Contact section.";
+                break;
+
+            case "clear":
+                terminalBody.innerHTML = "";
+                terminalBody.appendChild(terminalInput);
+                terminalInput.focus();
+                return;
+
+            case "":
+                return;
+
+            default:
+                output =
+                    "Command not found. Type 'help' for available commands.";
+        }
+
+        const commandLine = document.createElement("p");
+
+        commandLine.innerHTML =
+            '<span class="green">avanish@portfolio</span>:~$ ' +
+            command;
+
+        const resultLine = document.createElement("p");
+
+        resultLine.className = "terminal-output";
+        resultLine.textContent = output;
+
+        terminalBody.insertBefore(
+            commandLine,
+            terminalInput
+        );
+
+        terminalBody.insertBefore(
+            resultLine,
+            terminalInput
+        );
+
+        terminalInput.value = "";
+
+        terminalInput.focus();
+    });
+}
