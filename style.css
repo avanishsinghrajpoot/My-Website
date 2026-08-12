@@ -644,3 +644,27 @@ footer p {
 .calculator-buttons .zero {
     grid-column: span 2;
 }
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-btn {
+    background: transparent;
+    border: 1px solid #38bdf8;
+    color: white;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    transform: rotate(20deg) scale(1.1);
+}
