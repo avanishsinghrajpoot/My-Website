@@ -185,3 +185,28 @@ function typeEffect() {
 }
 
 typeEffect();
+/* =========================
+   DIGITAL CLOCK
+========================= */
+
+function updateClock() {
+
+    const now = new Date();
+
+    const time = now.toLocaleTimeString();
+
+    const date = now.toLocaleDateString("en-IN", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+
+    document.getElementById("clock-time").textContent = time;
+
+    document.getElementById("clock-date").textContent = date;
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
