@@ -220,7 +220,56 @@
         </div>
 
     </section>
+<!-- Calculator -->
+<section id="calculator" class="section">
 
+    <h2 class="section-title">My Calculator</h2>
+
+    <p class="section-subtitle">
+        A simple calculator built with HTML, CSS and JavaScript
+    </p>
+
+    <div class="calculator">
+
+        <input
+            type="text"
+            id="display"
+            class="calculator-display"
+            value="0"
+            readonly
+        >
+
+        <div class="calculator-buttons">
+
+            <button onclick="clearCalculator()" class="clear">C</button>
+            <button onclick="deleteNumber()">⌫</button>
+            <button onclick="calculatorInput('%')">%</button>
+            <button onclick="calculatorInput('/')">÷</button>
+
+            <button onclick="calculatorInput('7')">7</button>
+            <button onclick="calculatorInput('8')">8</button>
+            <button onclick="calculatorInput('9')">9</button>
+            <button onclick="calculatorInput('*')">×</button>
+
+            <button onclick="calculatorInput('4')">4</button>
+            <button onclick="calculatorInput('5')">5</button>
+            <button onclick="calculatorInput('6')">6</button>
+            <button onclick="calculatorInput('-')">−</button>
+
+            <button onclick="calculatorInput('1')">1</button>
+            <button onclick="calculatorInput('2')">2</button>
+            <button onclick="calculatorInput('3')">3</button>
+            <button onclick="calculatorInput('+')">+</button>
+
+            <button onclick="calculatorInput('0')" class="zero">0</button>
+            <button onclick="calculatorInput('.')">.</button>
+            <button onclick="calculateResult()" class="equal">=</button>
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- Contact -->
     <section id="contact" class="section">
