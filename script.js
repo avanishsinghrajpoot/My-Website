@@ -189,39 +189,35 @@ typeEffect();
    DIGITAL CLOCK
 ========================= */
 
-function updateClock() {
-
-    const now = new Date();
-
-    const time = now.toLocaleTimeString("en-IN", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false
-    });
-
-    const date = now.toLocaleDateString("en-IN", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-    });
+document.addEventListener("DOMContentLoaded", function () {
 
     const clockTime = document.getElementById("clock-time");
     const clockDate = document.getElementById("clock-date");
 
-    if (clockTime) {
-        clockTime.textContent = time;
+    function updateClock() {
+
+        const now = new Date();
+
+        clockTime.textContent = now.toLocaleTimeString("en-IN", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false
+        });
+
+        clockDate.textContent = now.toLocaleDateString("en-IN", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
     }
 
-    if (clockDate) {
-        clockDate.textContent = date;
-    }
-}
+    updateClock();
 
-updateClock();
+    setInterval(updateClock, 1000);
 
-setInterval(updateClock, 1000);
+});
 /* =========================
    ROCK PAPER SCISSORS
 ========================= */
@@ -273,6 +269,3 @@ function playGame(playerChoice) {
         "You: " + playerScore +
         " | Computer: " + computerScore;
 }
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Website JavaScript loaded successfully!");
-});
