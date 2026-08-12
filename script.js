@@ -261,3 +261,6 @@ function playGame(playerChoice) {
         "You: " + playerScore +
         " | Computer: " + computerScore;
 }
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Website JavaScript loaded successfully!");
+});
