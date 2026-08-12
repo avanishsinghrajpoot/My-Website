@@ -210,3 +210,54 @@ function updateClock() {
 updateClock();
 
 setInterval(updateClock, 1000);
+/* =========================
+   ROCK PAPER SCISSORS
+========================= */
+
+let playerScore = 0;
+let computerScore = 0;
+
+function playGame(playerChoice) {
+
+    const choices = [
+        "rock",
+        "paper",
+        "scissors"
+    ];
+
+    const computerChoice =
+        choices[Math.floor(Math.random() * 3)];
+
+    let result;
+
+    if (playerChoice === computerChoice) {
+
+        result = "It's a Draw! 🤝";
+
+    } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+
+        playerScore++;
+
+        result = "You Win! 🎉";
+
+    } else {
+
+        computerScore++;
+
+        result = "Computer Wins! 🤖";
+    }
+
+    document.getElementById("game-result").textContent =
+        result +
+        " Computer chose " +
+        computerChoice +
+        ".";
+
+    document.getElementById("game-score").textContent =
+        "You: " + playerScore +
+        " | Computer: " + computerScore;
+}
