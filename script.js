@@ -322,3 +322,46 @@ if (topBtn) {
     });
 
 }
+/* =========================
+   CURSOR / TOUCH GLOW
+========================= */
+
+const cursorGlow =
+    document.getElementById("cursorGlow");
+
+
+function moveGlow(x, y) {
+
+    if (!cursorGlow) return;
+
+    cursorGlow.style.left = x + "px";
+    cursorGlow.style.top = y + "px";
+}
+
+
+/* Computer */
+
+document.addEventListener("mousemove", function (event) {
+
+    moveGlow(
+        event.clientX,
+        event.clientY
+    );
+
+});
+
+
+/* Mobile / Touch */
+
+document.addEventListener("touchmove", function (event) {
+
+    if (!event.touches.length) return;
+
+    moveGlow(
+        event.touches[0].clientX,
+        event.touches[0].clientY
+    );
+
+}, {
+    passive: true
+});
