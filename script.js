@@ -54,3 +54,56 @@ document.getElementById("contactForm").addEventListener(
 
     }
 );
+/* =========================
+   CALCULATOR
+========================= */
+
+function calculatorInput(value) {
+
+    const display = document.getElementById("display");
+
+    if (display.value === "0") {
+        display.value = value;
+    } else {
+        display.value += value;
+    }
+}
+
+
+function clearCalculator() {
+
+    document.getElementById("display").value = "0";
+
+}
+
+
+function deleteNumber() {
+
+    const display = document.getElementById("display");
+
+    display.value = display.value.slice(0, -1);
+
+    if (display.value === "") {
+        display.value = "0";
+    }
+
+}
+
+
+function calculateResult() {
+
+    const display = document.getElementById("display");
+
+    try {
+
+        display.value = Function(
+            "return " + display.value
+        )();
+
+    } catch {
+
+        display.value = "Error";
+
+    }
+
+}
