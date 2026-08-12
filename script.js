@@ -887,3 +887,24 @@ if (terminalBody) {
         terminalInput.focus();
     });
 }
+/* =========================
+   ACCESS GRANTED EFFECT
+========================= */
+
+const terminalBox = document.querySelector(".terminal-box");
+
+if (terminalBox) {
+
+    setTimeout(function () {
+
+        const accessMessage =
+            document.createElement("div");
+
+        accessMessage.className = "access-message";
+        accessMessage.textContent =
+            "✓ ACCESS GRANTED";
+
+        terminalBox.appendChild(accessMessage);
+
+    }, 1000);
+}
