@@ -1045,3 +1045,73 @@ if (matrixCanvas) {
         50
     );
 }
+/* =========================
+   MATRIX RAIN EFFECT
+========================= */
+
+const matrixCanvas = document.getElementById("matrixCanvas");
+const matrixCtx = matrixCanvas.getContext("2d");
+
+function resizeMatrix() {
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
+}
+
+resizeMatrix();
+
+window.addEventListener("resize", resizeMatrix);
+
+const matrixChars =
+    "01アイウエオカキクケコサシスセソタチツテトABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+const matrixFontSize = 16;
+
+let matrixColumns =
+    Math.floor(window.innerWidth / matrixFontSize);
+
+let matrixDrops =
+    Array(matrixColumns).fill(1);
+
+function drawMatrix() {
+
+    matrixCtx.fillStyle = "rgba(2, 11, 5, 0.08)";
+    matrixCtx.fillRect(
+        0,
+        0,
+        matrixCanvas.width,
+        matrixCanvas.height
+    );
+
+    matrixCtx.fillStyle = "#22c55e";
+    matrixCtx.font =
+        matrixFontSize + "px monospace";
+
+    for (let i = 0; i < matrixDrops.length; i++) {
+
+        const character =
+            matrixChars[
+                Math.floor(
+                    Math.random() *
+                    matrixChars.length
+                )
+            ];
+
+        matrixCtx.fillText(
+            character,
+            i * matrixFontSize,
+            matrixDrops[i] * matrixFontSize
+        );
+
+        if (
+            matrixDrops[i] * matrixFontSize >
+                matrixCanvas.height &&
+            Math.random() > 0.975
+        ) {
+            matrixDrops[i] = 0;
+        }
+
+        matrixDrops[i]++;
+    }
+}
+
+setInterval(drawMatrix, 50);
