@@ -424,35 +424,6 @@
 
 
     <script src="script.js"></script>
-<script>
-function startClock() {
-
-    const clockTime = document.getElementById("clock-time");
-    const clockDate = document.getElementById("clock-date");
-
-    function update() {
-
-        const now = new Date();
-
-        clockTime.textContent =
-            now.toLocaleTimeString("en-IN");
-
-        clockDate.textContent =
-            now.toLocaleDateString("en-IN", {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            });
-    }
-
-    update();
-
-    setInterval(update, 1000);
-}
-
-startClock();
-</script>
 </body>
 
 </html>
