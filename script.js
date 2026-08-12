@@ -956,7 +956,9 @@ if (terminalBody) {
 ========================= */
 
 const matrixCanvas = document.getElementById("matrixCanvas");
+if (matrixCanvas) {
 const matrixCtx = matrixCanvas.getContext("2d");
+}
 
 function resizeMatrix() {
     matrixCanvas.width = window.innerWidth;
