@@ -1094,3 +1094,35 @@ body {
 
     transform: scale(1.1);
 }
+/* =========================
+   CURSOR GLOW EFFECT
+========================= */
+
+#cursorGlow {
+    position: fixed;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(56, 189, 248, 0.18) 0%,
+        rgba(56, 189, 248, 0.08) 35%,
+        transparent 70%
+    );
+
+    pointer-events: none;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 0;
+
+    left: 50%;
+    top: 50%;
+
+    transition:
+        left 0.08s linear,
+        top 0.08s linear;
+}
