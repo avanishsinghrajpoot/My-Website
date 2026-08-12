@@ -281,29 +281,43 @@ if (contactForm) {
     });
 }
 /* =========================
-   SCROLL TO TOP
+   PERMANENT SCROLL BUTTON
 ========================= */
 
-const topBtn = document.getElementById("topBtn");
+#topBtn {
+    position: fixed;
 
-window.addEventListener("scroll", function () {
+    right: 25px;
+    bottom: 30px;
 
-    if (!topBtn) return;
+    width: 65px;
+    height: 65px;
 
-    if (window.scrollY > 300) {
-        topBtn.style.display = "block";
-    } else {
-        topBtn.style.display = "none";
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-});
+    border: 2px solid #38bdf8;
+    border-radius: 50%;
 
+    background: rgba(2, 6, 23, 0.95);
+    color: #38bdf8;
 
-function scrollToTop() {
+    font-size: 35px;
+    font-weight: bold;
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    cursor: pointer;
 
+    z-index: 9999;
+
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+
+    transition: all 0.3s ease;
+}
+
+#topBtn:hover {
+    background: #38bdf8;
+    color: #020617;
+
+    transform: scale(1.1);
 }
