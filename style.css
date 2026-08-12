@@ -668,3 +668,48 @@ footer p {
 .theme-btn:hover {
     transform: rotate(20deg) scale(1.1);
 }
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+body.light-mode nav {
+    background: rgba(248, 250, 252, 0.95);
+    border-color: #cbd5e1;
+}
+
+body.light-mode .nav-links a {
+    color: #0f172a;
+}
+
+body.light-mode .hero {
+    background: #e0f2fe;
+}
+
+body.light-mode .hero h2,
+body.light-mode .hero-text {
+    color: #475569;
+}
+
+body.light-mode .about-box,
+body.light-mode .skill-card,
+body.light-mode .project-card,
+body.light-mode .calculator {
+    background: white;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .skill-card p,
+body.light-mode .project-card p,
+body.light-mode .about-box p {
+    color: #475569;
+}
+
+body.light-mode footer {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+}
