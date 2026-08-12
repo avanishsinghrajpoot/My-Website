@@ -13,6 +13,65 @@ function toggleMenu() {
 
 
 /* =========================
+   DARK / LIGHT MODE
+========================= */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("light-mode");
+
+    const themeButton =
+        document.querySelector(".theme-btn");
+
+    if (document.body.classList.contains("light-mode")) {
+
+        if (themeButton) {
+            themeButton.textContent = "☀️";
+        }
+
+        localStorage.setItem("theme", "light");
+
+    } else {
+
+        if (themeButton) {
+            themeButton.textContent = "🌙";
+        }
+
+        localStorage.setItem("theme", "dark");
+    }
+}
+
+
+/* Load saved theme */
+
+function loadTheme() {
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+    const themeButton =
+        document.querySelector(".theme-btn");
+
+    if (savedTheme === "light") {
+
+        document.body.classList.add("light-mode");
+
+        if (themeButton) {
+            themeButton.textContent = "☀️";
+        }
+
+    } else {
+
+        document.body.classList.remove("light-mode");
+
+        if (themeButton) {
+            themeButton.textContent = "🌙";
+        }
+    }
+}
+
+
+/* =========================
    WELCOME BUTTON
 ========================= */
 
@@ -46,12 +105,16 @@ function typeEffect() {
         return;
     }
 
-    const currentWord = words[wordIndex];
+    const currentWord =
+        words[wordIndex];
 
     if (!deleting) {
 
         typingText.textContent =
-            currentWord.substring(0, charIndex + 1);
+            currentWord.substring(
+                0,
+                charIndex + 1
+            );
 
         charIndex++;
 
@@ -67,7 +130,10 @@ function typeEffect() {
     } else {
 
         typingText.textContent =
-            currentWord.substring(0, charIndex - 1);
+            currentWord.substring(
+                0,
+                charIndex - 1
+            );
 
         charIndex--;
 
@@ -89,8 +155,6 @@ function typeEffect() {
         deleting ? 60 : 100
     );
 }
-
-typeEffect();
 
 
 /* =========================
@@ -128,10 +192,6 @@ function updateClock() {
         });
 }
 
-updateClock();
-
-setInterval(updateClock, 1000);
-
 
 /* =========================
    PROJECT BUTTON
@@ -139,7 +199,124 @@ setInterval(updateClock, 1000);
 
 function projectMessage(projectName) {
 
-    alert("You selected: " + projectName);
+    alert(
+        "You selected: " +
+        projectName
+    );
+}
+
+
+/* =========================
+   CALCULATOR
+========================= */
+
+let calculatorExpression = "";
+
+
+function calculatorInput(value) {
+
+    const display =
+        document.getElementById("display");
+
+    if (!display) {
+        return;
+    }
+
+    calculatorExpression += value;
+
+    display.value =
+        calculatorExpression;
+}
+
+
+function clearCalculator() {
+
+    const display =
+        document.getElementById("display");
+
+    calculatorExpression = "";
+
+    if (display) {
+        display.value = "0";
+    }
+}
+
+
+function deleteNumber() {
+
+    const display =
+        document.getElementById("display");
+
+    if (!display) {
+        return;
+    }
+
+    calculatorExpression =
+        calculatorExpression.slice(0, -1);
+
+    display.value =
+        calculatorExpression || "0";
+}
+
+
+function calculateResult() {
+
+    const display =
+        document.getElementById("display");
+
+    if (!display) {
+        return;
+    }
+
+    if (!calculatorExpression) {
+        return;
+    }
+
+    try {
+
+        let expression =
+            calculatorExpression;
+
+        /* Convert percentage */
+
+        expression =
+            expression.replace(
+                /(\d+(?:\.\d+)?)%/g,
+                "($1/100)"
+            );
+
+        const result =
+            Function(
+                '"use strict"; return (' +
+                expression +
+                ')'
+            )();
+
+        if (
+            typeof result !== "number" ||
+            !Number.isFinite(result)
+        ) {
+            throw new Error("Invalid calculation");
+        }
+
+        calculatorExpression =
+            String(result);
+
+        display.value =
+            calculatorExpression;
+
+    } catch (error) {
+
+        display.value = "Error";
+
+        calculatorExpression = "";
+
+        setTimeout(function () {
+
+            display.value = "0";
+
+        }, 1000);
+    }
 }
 
 
@@ -150,6 +327,7 @@ function projectMessage(projectName) {
 let playerScore = 0;
 let computerScore = 0;
 
+
 function playGame(playerChoice) {
 
     const choices = [
@@ -159,45 +337,76 @@ function playGame(playerChoice) {
     ];
 
     const computerChoice =
-        choices[Math.floor(Math.random() * choices.length)];
+        choices[
+            Math.floor(
+                Math.random() *
+                choices.length
+            )
+        ];
 
     let result;
 
-    if (playerChoice === computerChoice) {
 
-        result = "It's a Draw! 🤝";
+    if (
+        playerChoice === computerChoice
+    ) {
+
+        result =
+            "It's a Draw! 🤝";
 
     }
 
+
     else if (
-        (playerChoice === "rock" &&
-            computerChoice === "scissors") ||
 
-        (playerChoice === "paper" &&
-            computerChoice === "rock") ||
+        (
+            playerChoice === "rock" &&
+            computerChoice === "scissors"
+        )
 
-        (playerChoice === "scissors" &&
-            computerChoice === "paper")
+        ||
+
+        (
+            playerChoice === "paper" &&
+            computerChoice === "rock"
+        )
+
+        ||
+
+        (
+            playerChoice === "scissors" &&
+            computerChoice === "paper"
+        )
+
     ) {
 
         playerScore++;
 
-        result = "You Win! 🎉";
+        result =
+            "You Win! 🎉";
 
     }
+
 
     else {
 
         computerScore++;
 
-        result = "Computer Wins! 🤖";
+        result =
+            "Computer Wins! 🤖";
     }
 
+
     const gameResult =
-        document.getElementById("game-result");
+        document.getElementById(
+            "game-result"
+        );
 
     const gameScore =
-        document.getElementById("game-score");
+        document.getElementById(
+            "game-score"
+        );
+
 
     if (gameResult) {
 
@@ -208,6 +417,7 @@ function playGame(playerChoice) {
             ".";
     }
 
+
     if (gameScore) {
 
         gameScore.textContent =
@@ -217,151 +427,116 @@ function playGame(playerChoice) {
             computerScore;
     }
 }
+
+
 /* =========================
    CONTACT FORM
 ========================= */
 
-const contactForm = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
+const contactForm =
+    document.getElementById("contactForm");
+
+const formMessage =
+    document.getElementById("formMessage");
+
 
 if (contactForm) {
 
-    contactForm.addEventListener("submit", async function (event) {
+    contactForm.addEventListener(
+        "submit",
+        async function (event) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        const submitButton =
-            contactForm.querySelector("button[type='submit']");
+            const submitButton =
+                contactForm.querySelector(
+                    "button[type='submit']"
+                );
 
-        submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
-
-        const formData = new FormData(contactForm);
-
-        try {
-
-            const response = await fetch(
-                contactForm.action,
-                {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                }
-            );
-
-            if (response.ok) {
-
-                formMessage.textContent =
-                    "Message sent successfully! ✅";
-
-                formMessage.style.color = "#38bdf8";
-
-                contactForm.reset();
-
-            } else {
-
-                formMessage.textContent =
-                    "Something went wrong. Please try again. ❌";
-
-                formMessage.style.color = "red";
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent =
+                    "Sending...";
             }
 
-        } catch (error) {
+            const formData =
+                new FormData(contactForm);
 
-            formMessage.textContent =
-                "Unable to send message. Check your internet connection. ❌";
+            try {
 
-            formMessage.style.color = "red";
+                const response =
+                    await fetch(
+                        contactForm.action,
+                        {
+                            method: "POST",
+                            body: formData,
+                            headers: {
+                                "Accept":
+                                    "application/json"
+                            }
+                        }
+                    );
+
+
+                if (response.ok) {
+
+                    if (formMessage) {
+
+                        formMessage.textContent =
+                            "Message sent successfully! ✅";
+
+                        formMessage.style.color =
+                            "#38bdf8";
+                    }
+
+                    contactForm.reset();
+
+                } else {
+
+                    if (formMessage) {
+
+                        formMessage.textContent =
+                            "Something went wrong. Please try again. ❌";
+
+                        formMessage.style.color =
+                            "red";
+                    }
+                }
+
+            } catch (error) {
+
+                if (formMessage) {
+
+                    formMessage.textContent =
+                        "Unable to send message. Check your internet connection. ❌";
+
+                    formMessage.style.color =
+                        "red";
+                }
+            }
+
+
+            if (submitButton) {
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Send";
+            }
+
         }
-
-        submitButton.disabled = false;
-        submitButton.textContent = "Send Message";
-    });
+    );
 }
+
+
 /* =========================
    SCROLL TO TOP
 ========================= */
 
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", function () {
-
-    if (!topBtn) return;
-
-    const topBtn = document.getElementById("topBtn");
-
-if (topBtn) {
-
-    topBtn.addEventListener("click", function () {
-
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-        });
-
-    });
-
-}
-
-});
+const topBtn =
+    document.getElementById("topBtn");
 
 
 if (topBtn) {
 
-    topBtn.addEventListener("click", function () {
-
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-        });
-
-    });
-
-}
-/* =========================
-   CURSOR / TOUCH GLOW
-========================= */
-
-const cursorGlow =
-    document.getElementById("cursorGlow");
-
-
-function moveGlow(x, y) {
-
-    if (!cursorGlow) return;
-
-    cursorGlow.style.left = x + "px";
-    cursorGlow.style.top = y + "px";
-}
-
-
-/* Computer */
-
-document.addEventListener("mousemove", function (event) {
-
-    moveGlow(
-        event.clientX,
-        event.clientY
-    );
-
-});
-
-
-/* Mobile / Touch */
-
-document.addEventListener("touchmove", function (event) {
-
-    if (!event.touches.length) return;
-
-    moveGlow(
-        event.touches[0].clientX,
-        event.touches[0].clientY
-    );
-
-}, {
-    passive: true
-});
+   
