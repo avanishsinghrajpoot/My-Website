@@ -185,7 +185,7 @@ function typeEffect() {
 }
 
 typeEffect();
-/* =========================
+//* =========================
    DIGITAL CLOCK
 ========================= */
 
@@ -193,7 +193,12 @@ function updateClock() {
 
     const now = new Date();
 
-    const time = now.toLocaleTimeString();
+    const time = now.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+    });
 
     const date = now.toLocaleDateString("en-IN", {
         weekday: "long",
@@ -202,9 +207,16 @@ function updateClock() {
         year: "numeric"
     });
 
-    document.getElementById("clock-time").textContent = time;
+    const clockTime = document.getElementById("clock-time");
+    const clockDate = document.getElementById("clock-date");
 
-    document.getElementById("clock-date").textContent = date;
+    if (clockTime) {
+        clockTime.textContent = time;
+    }
+
+    if (clockDate) {
+        clockDate.textContent = date;
+    }
 }
 
 updateClock();
