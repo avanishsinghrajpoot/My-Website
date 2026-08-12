@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Avanish Singh | Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <h2 class="logo">Avanish.</h2>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Home -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="welcome">WELCOME TO MY PORTFOLIO</p>
+
+            <h1>
+                Hi, I'm <span>Avanish Singh</span> 👋
+            </h1>
+
+            <h2>
+                B.Tech CSE (Data Science) Student
+            </h2>
+
+            <p class="hero-text">
+                I am passionate about coding, problem solving
+                and web development. I am continuously learning
+                new technologies and building interesting projects.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#projects" class="btn">
+                    View My Projects
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section id="about" class="section">
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-box">
+
+            <h3>Hello! I'm Avanish Singh</h3>
+
+            <p>
+                I am a B.Tech CSE (Data Science) student at VBSPU.
+                I am interested in coding, problem solving and
+                web development.
+            </p>
+
+            <p>
+                Currently, I am learning HTML, CSS and JavaScript
+                and working on different projects to improve my
+                programming skills.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+
+        <h2 class="section-title">My Skills</h2>
+
+        <p class="section-subtitle">
+            Technologies and skills I am currently learning
+        </p>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <div class="icon">🌐</div>
+                <h3>HTML</h3>
+                <p>
+                    Website structure and content.
+                </p>
+            </div>
+
+
+            <div class="skill-card">
+                <div class="icon">🎨</div>
+                <h3>CSS</h3>
+                <p>
+                    Design, layout and animations.
+                </p>
+            </div>
+
+
+            <div class="skill-card">
+                <div class="icon">⚡</div>
+                <h3>JavaScript</h3>
+                <p>
+                    Interactive website features.
+                </p>
+            </div>
+
+
+            <div class="skill-card">
+                <div class="icon">💡</div>
+                <h3>Problem Solving</h3>
+                <p>
+                    Logical thinking and programming.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+
+        <h2 class="section-title">My Projects</h2>
+
+        <p class="section-subtitle">
+            Some projects I am learning and working on
+        </p>
+
+        <div class="projects-container">
+
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    01
+                </div>
+
+                <h3>My First Website</h3>
+
+                <p>
+                    A responsive website created using
+                    HTML and CSS.
+                </p>
+
+                <button onclick="projectMessage('My First Website')">
+                    View Project
+                </button>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    02
+                </div>
+
+                <h3>Calculator</h3>
+
+                <p>
+                    A simple calculator created using
+                    HTML, CSS and JavaScript.
+                </p>
+
+                <button onclick="projectMessage('Calculator')">
+                    View Project
+                </button>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    03
+                </div>
+
+                <h3>To-Do List</h3>
+
+                <p>
+                    A task management website using
+                    JavaScript.
+                </p>
+
+                <button onclick="projectMessage('To-Do List')">
+                    View Project
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+
+        <h2 class="section-title">Contact Me</h2>
+
+        <p class="section-subtitle">
+            Have a question? Send me a message.
+        </p>
+
+
+        <form id="contactForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                required
+            >
+
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                required
+            >
+
+
+            <textarea
+                id="message"
+                placeholder="Your Message"
+                required
+            ></textarea>
+
+
+            <button type="submit" class="send-btn">
+                Send Message
+            </button>
+
+        </form>
+
+
+        <p id="formMessage"></p>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>Avanish Singh</h3>
+
+        <p>
+            B.Tech CSE (Data Science) Student
+        </p>
+
+        <div class="social-links">
+
+            <a
+                href="https://github.com/"
+                target="_blank"
+            >
+                GitHub
+            </a>
+
+            <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+            >
+                LinkedIn
+            </a>
+
+            <a
+                href="https://instagram.com/"
+                target="_blank"
+            >
+                Instagram
+            </a>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 Avanish Singh. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
