@@ -908,3 +908,45 @@ if (terminalBox) {
 
     }, 1000);
 }
+/* =========================
+   TERMINAL BOOT TYPING
+========================= */
+
+const bootLines = [
+    "Initializing system...",
+    "Loading portfolio modules...",
+    "Checking skills...",
+    "Connecting to project database...",
+    "System ready."
+];
+
+const terminalBoot = document.createElement("div");
+
+terminalBoot.className = "terminal-boot";
+
+if (terminalBody) {
+
+    terminalBody.prepend(terminalBoot);
+
+    let bootIndex = 0;
+
+    function showBootLine() {
+
+        if (bootIndex >= bootLines.length) {
+            return;
+        }
+
+        const line = document.createElement("p");
+
+        line.textContent =
+            "> " + bootLines[bootIndex];
+
+        terminalBoot.appendChild(line);
+
+        bootIndex++;
+
+        setTimeout(showBootLine, 500);
+    }
+
+    showBootLine();
+}
