@@ -926,3 +926,56 @@ body {
 
     font-size: 18px;
 }
+/* =========================
+   ROCK PAPER SCISSORS GAME
+========================= */
+
+.game-box {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px 20px;
+    text-align: center;
+
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+}
+
+#game-result {
+    font-size: 22px;
+    margin: 20px 0;
+    color: #38bdf8;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.game-buttons button {
+    padding: 15px 25px;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+
+    background: transparent;
+    color: white;
+
+    font-size: 17px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.game-buttons button:hover {
+    background: #38bdf8;
+    color: #06111f;
+    transform: translateY(-5px);
+}
+
+#game-score {
+    margin-top: 25px;
+    font-size: 18px;
+    color: white;
+}
