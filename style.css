@@ -1054,37 +1054,43 @@ body {
     color: #cbd5e1;
 }
 /* =========================
-   SCROLL TO TOP
+   PERMANENT SCROLL BUTTON
 ========================= */
 
 #topBtn {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
 
-    width: 50px;
-    height: 50px;
+    right: 25px;
+    bottom: 30px;
 
-    border: none;
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #38bdf8;
     border-radius: 50%;
 
-    background: #38bdf8;
-    color: #020617;
+    background: rgba(2, 6, 23, 0.95);
+    color: #38bdf8;
 
-    font-size: 25px;
+    font-size: 35px;
     font-weight: bold;
 
     cursor: pointer;
 
-    display: none;
+    z-index: 9999;
 
-    z-index: 999;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
 
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
-
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 #topBtn:hover {
-    transform: translateY(-5px) scale(1.05);
+    background: #38bdf8;
+    color: #020617;
+
+    transform: scale(1.1);
 }
