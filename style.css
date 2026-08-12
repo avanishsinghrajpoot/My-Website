@@ -763,3 +763,62 @@ body.light-mode footer {
     }
 
 }
+/* Animated Background */
+
+body {
+    background: #020617;
+    overflow-x: hidden;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+    top: -150px;
+    left: -150px;
+    opacity: 0.15;
+    animation: moveGlow 8s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+    bottom: -150px;
+    right: -100px;
+    opacity: 0.12;
+    animation: moveGlow2 10s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes moveGlow {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(250px, 150px);
+    }
+}
+
+@keyframes moveGlow2 {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-200px, -120px);
+    }
+}
