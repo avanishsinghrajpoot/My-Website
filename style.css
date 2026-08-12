@@ -33,37 +33,57 @@ nav {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
-    padding: 0 8%;
+    padding: 0 5%;
 
     background: rgba(2, 6, 23, 0.95);
-
     border-bottom: 1px solid #1e293b;
 }
 
+/* Three line menu - LEFT */
+.nav-right {
+    position: absolute;
+    left: 5%;
+
+    display: flex;
+    align-items: center;
+}
+
+/* Avanish - CENTER */
 .logo {
     color: #38bdf8;
     font-size: 25px;
 }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
+/* Theme button - RIGHT */
+.theme-btn {
+    position: absolute;
+    right: 5%;
 
-.nav-links a {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: transparent;
+    border: 1px solid #38bdf8;
+
     color: white;
-    text-decoration: none;
+    font-size: 20px;
+
+    cursor: pointer;
+
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #38bdf8;
+.theme-btn:hover {
+    transform: rotate(20deg) scale(1.1);
 }
 
+/* Menu button */
 .menu-btn {
-    display: none;
+    display: block;
 
     background: transparent;
     border: none;
@@ -71,8 +91,29 @@ nav {
     color: white;
 
     font-size: 28px;
+
+    cursor: pointer;
 }
 
+/* Navigation links */
+.nav-links {
+    display: flex;
+    gap: 25px;
+
+    position: absolute;
+    right: 5%;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
 
 /* =========================
    HERO
