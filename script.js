@@ -1310,3 +1310,105 @@ function finishScan() {
     scanBtn.textContent = "⚡ RUN SYSTEM SCAN AGAIN";
 
 }
+/* =====================================================
+   SECRET HACKER MODE
+===================================================== */
+
+const secretCommands = {
+    secret: "🔐 SECRET MODE ACTIVATED...",
+    matrix: "💻 MATRIX PROTOCOL INITIALIZED...",
+    hack: "⚠️ SIMULATION MODE: HACKING MAINFRAME...",
+    sudo: "🛡️ ACCESS LEVEL: ROOT",
+    whoami: "👤 AVANISH SINGH — DEVELOPER",
+    skills: "⚡ HTML | CSS | JavaScript | Problem Solving",
+    github: "🐙 GitHub: avanishsinghrajpoot"
+};
+
+if (terminalInput) {
+
+    terminalInput.addEventListener("keydown", function (event) {
+
+        if (event.key !== "Enter") return;
+
+        const command = terminalInput.value
+            .trim()
+            .toLowerCase();
+
+        if (!command) return;
+
+        const commandLine = document.createElement("p");
+
+        commandLine.innerHTML = `
+            <span class="green">
+                avanish@portfolio:~$
+            </span>
+            <span class="white">
+                ${command}
+            </span>
+        `;
+
+        terminalBody.insertBefore(
+            commandLine,
+            terminalBody.querySelector(".terminal-command")
+        );
+
+        if (secretCommands[command]) {
+
+            const output = document.createElement("p");
+
+            output.className = "terminal-output";
+
+            output.textContent =
+                secretCommands[command];
+
+            terminalBody.insertBefore(
+                output,
+                terminalBody.querySelector(".terminal-command")
+            );
+
+        } else if (command === "help") {
+
+            const output = document.createElement("p");
+
+            output.className = "terminal-output";
+
+            output.innerHTML = `
+                Available commands:<br>
+                ├─ whoami<br>
+                ├─ skills<br>
+                ├─ github<br>
+                ├─ status<br>
+                ├─ secret 🔐<br>
+                ├─ matrix 💻<br>
+                ├─ hack ⚠️<br>
+                └─ sudo 🛡️
+            `;
+
+            terminalBody.insertBefore(
+                output,
+                terminalBody.querySelector(".terminal-command")
+            );
+
+        } else {
+
+            const output = document.createElement("p");
+
+            output.className = "terminal-output";
+
+            output.textContent =
+                `Command not found: ${command}`;
+
+            terminalBody.insertBefore(
+                output,
+                terminalBody.querySelector(".terminal-command")
+            );
+        }
+
+        terminalInput.value = "";
+
+        terminalBody.scrollTop =
+            terminalBody.scrollHeight;
+
+    });
+
+}
