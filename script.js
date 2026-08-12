@@ -1,15 +1,4 @@
 /* =========================
-   WELCOME BUTTON
-========================= */
-
-function showMessage() {
-
-    alert("Welcome to Avanish Singh's Portfolio! 🎉");
-
-}
-
-
-/* =========================
    MOBILE MENU
 ========================= */
 
@@ -17,121 +6,28 @@ function toggleMenu() {
 
     const menu = document.getElementById("navLinks");
 
-    menu.classList.toggle("active");
-
+    if (menu) {
+        menu.classList.toggle("active");
+    }
 }
 
 
 /* =========================
-   PROJECT BUTTON
+   WELCOME BUTTON
 ========================= */
 
-function projectMessage(projectName) {
+function showMessage() {
 
-    alert("You selected: " + projectName);
-
+    alert("Welcome to my website! 🎉");
 }
 
 
-/* =========================
-   CONTACT FORM
-========================= */
-
-document.getElementById("contactForm").addEventListener(
-    "submit",
-    function(event) {
-
-        event.preventDefault();
-
-        const name =
-            document.getElementById("name").value;
-
-        document.getElementById("formMessage").textContent =
-            "Thank you, " + name +
-            "! Your message has been received. 🎉";
-
-        document.getElementById("contactForm").reset();
-
-    }
-);
-/* =========================
-   CALCULATOR
-========================= */
-
-function calculatorInput(value) {
-
-    const display = document.getElementById("display");
-
-    if (display.value === "0") {
-        display.value = value;
-    } else {
-        display.value += value;
-    }
-}
-
-
-function clearCalculator() {
-
-    document.getElementById("display").value = "0";
-
-}
-
-
-function deleteNumber() {
-
-    const display = document.getElementById("display");
-
-    display.value = display.value.slice(0, -1);
-
-    if (display.value === "") {
-        display.value = "0";
-    }
-
-}
-
-
-function calculateResult() {
-
-    const display = document.getElementById("display");
-
-    try {
-
-        display.value = Function(
-            "return " + display.value
-        )();
-
-    } catch {
-
-        display.value = "Error";
-
-    }
-
-}
-/* =========================
-   DARK / LIGHT MODE
-========================= */
-
-function toggleTheme() {
-
-    document.body.classList.toggle("light-mode");
-
-    const button = document.querySelector(".theme-btn");
-
-    if (document.body.classList.contains("light-mode")) {
-        button.textContent = "☀️";
-    } else {
-        button.textContent = "🌙";
-    }
-
-}
 /* =========================
    TYPING ANIMATION
 ========================= */
 
-const typingText = document.getElementById("typing-text");
-
 const words = [
-    "B.Tech Student",
+    "B.Tech CSE (Data Science) Student",
     "Coder",
     "Web Developer",
     "Problem Solver"
@@ -143,6 +39,13 @@ let deleting = false;
 
 function typeEffect() {
 
+    const typingText =
+        document.getElementById("typing-text");
+
+    if (!typingText) {
+        return;
+    }
+
     const currentWord = words[wordIndex];
 
     if (!deleting) {
@@ -152,7 +55,7 @@ function typeEffect() {
 
         charIndex++;
 
-        if (charIndex === currentWord.length) {
+        if (charIndex >= currentWord.length) {
 
             deleting = true;
 
@@ -168,56 +71,78 @@ function typeEffect() {
 
         charIndex--;
 
-        if (charIndex === 0) {
+        if (charIndex <= 0) {
 
+            charIndex = 0;
             deleting = false;
 
             wordIndex++;
 
-            if (wordIndex === words.length) {
+            if (wordIndex >= words.length) {
                 wordIndex = 0;
             }
-
         }
     }
 
-    setTimeout(typeEffect, deleting ? 60 : 100);
+    setTimeout(
+        typeEffect,
+        deleting ? 60 : 100
+    );
 }
 
 typeEffect();
+
+
 /* =========================
    DIGITAL CLOCK
 ========================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+function updateClock() {
 
-    const clockTime = document.getElementById("clock-time");
-    const clockDate = document.getElementById("clock-date");
+    const clockTime =
+        document.getElementById("clock-time");
 
-    function updateClock() {
+    const clockDate =
+        document.getElementById("clock-date");
 
-        const now = new Date();
+    if (!clockTime || !clockDate) {
+        return;
+    }
 
-        clockTime.textContent = now.toLocaleTimeString("en-IN", {
+    const now = new Date();
+
+    clockTime.textContent =
+        now.toLocaleTimeString("en-IN", {
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit",
             hour12: false
         });
 
-        clockDate.textContent = now.toLocaleDateString("en-IN", {
+    clockDate.textContent =
+        now.toLocaleDateString("en-IN", {
             weekday: "long",
             day: "numeric",
             month: "long",
             year: "numeric"
         });
-    }
+}
 
-    updateClock();
+updateClock();
 
-    setInterval(updateClock, 1000);
+setInterval(updateClock, 1000);
 
-});
+
+/* =========================
+   PROJECT BUTTON
+========================= */
+
+function projectMessage(projectName) {
+
+    alert("You selected: " + projectName);
+}
+
+
 /* =========================
    ROCK PAPER SCISSORS
 ========================= */
@@ -234,7 +159,7 @@ function playGame(playerChoice) {
     ];
 
     const computerChoice =
-        choices[Math.floor(Math.random() * 3)];
+        choices[Math.floor(Math.random() * choices.length)];
 
     let result;
 
@@ -242,30 +167,53 @@ function playGame(playerChoice) {
 
         result = "It's a Draw! 🤝";
 
-    } else if (
-        (playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice === "paper")
+    }
+
+    else if (
+        (playerChoice === "rock" &&
+            computerChoice === "scissors") ||
+
+        (playerChoice === "paper" &&
+            computerChoice === "rock") ||
+
+        (playerChoice === "scissors" &&
+            computerChoice === "paper")
     ) {
 
         playerScore++;
 
         result = "You Win! 🎉";
 
-    } else {
+    }
+
+    else {
 
         computerScore++;
 
         result = "Computer Wins! 🤖";
     }
 
-    document.getElementById("game-result").textContent =
-        result +
-        " Computer chose " +
-        computerChoice +
-        ".";
+    const gameResult =
+        document.getElementById("game-result");
 
-    document.getElementById("game-score").textContent =
-        "You: " + playerScore +
-        " | Computer: " + computerScore;
+    const gameScore =
+        document.getElementById("game-score");
+
+    if (gameResult) {
+
+        gameResult.textContent =
+            result +
+            " Computer chose " +
+            computerChoice +
+            ".";
+    }
+
+    if (gameScore) {
+
+        gameScore.textContent =
+            "You: " +
+            playerScore +
+            " | Computer: " +
+            computerScore;
+    }
 }
