@@ -217,3 +217,66 @@ function playGame(playerChoice) {
             computerScore;
     }
 }
+/* =========================
+   CONTACT FORM
+========================= */
+
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+
+if (contactForm) {
+
+    contactForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        const submitButton =
+            contactForm.querySelector("button[type='submit']");
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+
+        const formData = new FormData(contactForm);
+
+        try {
+
+            const response = await fetch(
+                contactForm.action,
+                {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+            if (response.ok) {
+
+                formMessage.textContent =
+                    "Message sent successfully! ✅";
+
+                formMessage.style.color = "#38bdf8";
+
+                contactForm.reset();
+
+            } else {
+
+                formMessage.textContent =
+                    "Something went wrong. Please try again. ❌";
+
+                formMessage.style.color = "red";
+            }
+
+        } catch (error) {
+
+            formMessage.textContent =
+                "Unable to send message. Check your internet connection. ❌";
+
+            formMessage.style.color = "red";
+        }
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+    });
+}
