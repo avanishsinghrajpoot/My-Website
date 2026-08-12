@@ -1664,3 +1664,290 @@ body.light-mode .terminal-body {
     }
 
 }
+/* =====================================================
+   CYBER SYSTEM SCAN
+===================================================== */
+
+.system-box {
+    width: 90%;
+    max-width: 750px;
+
+    margin: 30px auto;
+
+    background: rgba(2, 15, 8, .92);
+
+    border: 1px solid #22c55e;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    text-align: left;
+
+    box-shadow:
+        0 0 25px rgba(34, 197, 94, .2),
+        inset 0 0 30px rgba(34, 197, 94, .03);
+}
+
+
+/* System Header */
+
+.system-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 18px;
+
+    background: #061b0d;
+
+    border-bottom: 1px solid #14532d;
+
+    color: #4ade80;
+}
+
+.system-header > span:first-child {
+    color: #22c55e;
+
+    animation: systemPulse 1s infinite;
+}
+
+.system-status {
+    margin-left: auto;
+
+    color: #22c55e;
+
+    font-size: 13px;
+
+    text-shadow: 0 0 8px #22c55e;
+}
+
+
+/* System Content */
+
+.system-content {
+    padding: 28px;
+}
+
+
+/* Scan Lines */
+
+.scan-line {
+    display: grid;
+
+    grid-template-columns: 100px 1fr 55px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+
+    color: #86efac;
+
+    font-size: 14px;
+}
+
+.scan-line b {
+    color: #22c55e;
+
+    text-align: right;
+}
+
+
+/* Progress Bar */
+
+.scan-bar {
+    height: 10px;
+
+    background: #052e16;
+
+    border: 1px solid #14532d;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.scan-progress {
+    width: 0;
+
+    height: 100%;
+
+    background: #22c55e;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 10px #22c55e;
+
+    transition: width 1.5s ease;
+}
+
+
+/* Scan Output */
+
+#scan-output {
+    min-height: 125px;
+
+    margin: 25px 0;
+
+    padding: 18px;
+
+    background: #010904;
+
+    border: 1px solid #14532d;
+
+    border-radius: 6px;
+
+    color: #4ade80;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 14px;
+
+    overflow: hidden;
+}
+
+#scan-output p {
+    margin-bottom: 7px;
+}
+
+.scan-success {
+    color: #22c55e;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 8px #22c55e,
+        0 0 18px rgba(34, 197, 94, .5);
+}
+
+.scan-warning {
+    color: #facc15;
+}
+
+
+/* Scan Button */
+
+#scanBtn {
+    display: block;
+
+    margin: 20px auto 0;
+
+    min-width: 240px;
+}
+
+#scanBtn.scanning {
+    background: transparent;
+
+    color: #4ade80;
+
+    cursor: wait;
+
+    animation: scanButtonGlow 1s infinite alternate;
+}
+
+
+/* Animations */
+
+@keyframes systemPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+
+        text-shadow:
+            0 0 5px #22c55e;
+    }
+
+    50% {
+        opacity: .35;
+
+        text-shadow: none;
+    }
+}
+
+@keyframes scanButtonGlow {
+
+    from {
+        box-shadow:
+            0 0 5px #22c55e;
+    }
+
+    to {
+        box-shadow:
+            0 0 25px #22c55e;
+    }
+}
+
+
+/* =====================================================
+   SYSTEM SCAN - LIGHT MODE
+===================================================== */
+
+body.light-mode .system-box {
+    background: rgba(255, 255, 255, .95);
+
+    border-color: #86efac;
+}
+
+body.light-mode .system-header {
+    background: #d1fae5;
+
+    border-color: #86efac;
+}
+
+body.light-mode .scan-bar {
+    background: #dcfce7;
+
+    border-color: #86efac;
+}
+
+body.light-mode #scan-output {
+    background: #f0fdf4;
+
+    border-color: #86efac;
+}
+
+
+/* =====================================================
+   SYSTEM SCAN - MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .system-box {
+        width: 100%;
+    }
+
+    .system-content {
+        padding: 20px 15px;
+    }
+
+    .system-header {
+        font-size: 12px;
+    }
+
+    .scan-line {
+        grid-template-columns: 75px 1fr 45px;
+
+        gap: 8px;
+
+        font-size: 12px;
+    }
+
+    #scan-output {
+        font-size: 12px;
+
+        min-height: 140px;
+    }
+
+    #scanBtn {
+        width: 100%;
+
+        min-width: 0;
+    }
+}
