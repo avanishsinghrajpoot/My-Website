@@ -822,3 +822,36 @@ body {
         transform: translate(-200px, -120px);
     }
 }
+/* =========================
+   DIGITAL CLOCK
+========================= */
+
+.clock-box {
+    width: 320px;
+    max-width: 100%;
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    background: #0f172a;
+
+    border: 1px solid #1e293b;
+
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+#clock-time {
+    font-size: 42px;
+    font-weight: bold;
+    color: #38bdf8;
+    letter-spacing: 2px;
+}
+
+#clock-date {
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 16px;
+}
