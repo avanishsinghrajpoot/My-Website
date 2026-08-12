@@ -713,3 +713,12 @@ body.light-mode footer {
     background: #e2e8f0;
     border-color: #cbd5e1;
 }
+/* =========================
+   TYPING ANIMATION
+========================= */
+
+#typing-text {
+    color: #38bdf8;
+    border-right: 3px solid #38bdf8;
+    padding-right: 5px;
+}
