@@ -1177,3 +1177,136 @@ console.log(
     "%c Type 'help' inside the Hacker Terminal.",
     "color:#86efac;font-size:12px;"
 );
+/* =====================================================
+   CYBER SYSTEM SCAN
+===================================================== */
+
+const scanBtn = document.getElementById("scanBtn");
+const scanOutput = document.getElementById("scan-output");
+const scanProgress = document.querySelectorAll(".scan-progress");
+
+if (scanBtn && scanOutput) {
+
+    scanBtn.addEventListener("click", startSystemScan);
+
+}
+
+function startSystemScan() {
+
+    if (scanBtn.classList.contains("scanning")) {
+        return;
+    }
+
+    scanBtn.classList.add("scanning");
+    scanBtn.disabled = true;
+
+    scanBtn.textContent = "⚡ SCANNING...";
+
+    // Reset progress bars
+    scanProgress.forEach(bar => {
+        bar.style.width = "0%";
+    });
+
+    // Clear terminal
+    scanOutput.innerHTML = "";
+
+    const messages = [
+        "> Initializing cyber diagnostic protocol...",
+        "> Connecting to system core...",
+        "> Scanning network............... OK",
+        "> Checking security.............. OK",
+        "> Checking database.............. OK",
+        "> Analyzing system core.......... OK",
+        "> Running final diagnostics..... OK"
+    ];
+
+    let index = 0;
+
+    function showMessage() {
+
+        if (index < messages.length) {
+
+            const p = document.createElement("p");
+
+            p.textContent = messages[index];
+
+            scanOutput.appendChild(p);
+
+            scanOutput.scrollTop = scanOutput.scrollHeight;
+
+            index++;
+
+            updateProgress(index);
+
+            setTimeout(showMessage, 700);
+
+        } else {
+
+            finishScan();
+
+        }
+
+    }
+
+    showMessage();
+}
+
+
+/* Progress Bar */
+
+function updateProgress(step) {
+
+    const values = [
+        15,
+        30,
+        48,
+        65,
+        80,
+        92,
+        100
+    ];
+
+    const value = values[step - 1] || 100;
+
+    scanProgress.forEach(bar => {
+
+        const originalValue =
+            parseInt(bar.dataset.value) || value;
+
+        const finalValue =
+            Math.min(originalValue, value);
+
+        bar.style.width = finalValue + "%";
+
+    });
+
+}
+
+
+/* Scan Complete */
+
+function finishScan() {
+
+    const success = document.createElement("p");
+
+    success.className = "scan-success";
+
+    success.textContent =
+        "✓ SYSTEM SECURE — ACCESS GRANTED";
+
+    scanOutput.appendChild(success);
+
+    const time = document.createElement("p");
+
+    time.textContent =
+        "> Scan completed successfully.";
+
+    scanOutput.appendChild(time);
+
+    scanBtn.classList.remove("scanning");
+
+    scanBtn.disabled = false;
+
+    scanBtn.textContent = "⚡ RUN SYSTEM SCAN AGAIN";
+
+}
