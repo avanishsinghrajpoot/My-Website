@@ -1697,3 +1697,8 @@ function reactionClick() {
 
     box.onclick = null;
 }
+console.log("ARCADE LOADED");
+
+console.log(typeof startGuessGame);
+console.log(typeof startMemoryGame);
+console.log(typeof startReactionGame);
