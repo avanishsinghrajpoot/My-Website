@@ -1702,3 +1702,66 @@ console.log("ARCADE LOADED");
 console.log(typeof startGuessGame);
 console.log(typeof startMemoryGame);
 console.log(typeof startReactionGame);
+// ================= ARCADE TEST =================
+
+function startGuessGame() {
+    const title = document.getElementById("arcadeTitle");
+    const message = document.getElementById("arcadeMessage");
+    const controls = document.getElementById("arcadeControls");
+
+    title.textContent = "🎯 NUMBER HACK";
+
+    message.textContent =
+        "SYSTEM: Secret number generated. Find it between 1-100!";
+
+    controls.innerHTML = `
+        <input
+            type="number"
+            id="guessInput"
+            placeholder="Enter number..."
+            min="1"
+            max="100"
+        >
+
+        <button type="button" onclick="checkGuess()">
+            [ HACK ]
+        </button>
+
+        <p id="guessResult"></p>
+    `;
+
+    secretNumber = Math.floor(Math.random() * 100) + 1;
+    guessAttempts = 0;
+}
+
+let secretNumber = 0;
+let guessAttempts = 0;
+
+function checkGuess() {
+
+    const input = document.getElementById("guessInput");
+    const result = document.getElementById("guessResult");
+
+    const guess = Number(input.value);
+
+    if (guess < 1 || guess > 100) {
+        result.textContent = "⚠ Enter 1 to 100";
+        return;
+    }
+
+    guessAttempts++;
+
+    if (guess === secretNumber) {
+
+        result.textContent =
+            `✓ ACCESS GRANTED! Number: ${secretNumber} | Attempts: ${guessAttempts}`;
+
+    } else if (guess < secretNumber) {
+
+        result.textContent = "⬆ TOO LOW";
+
+    } else {
+
+        result.textContent = "⬇ TOO HIGH";
+    }
+}
