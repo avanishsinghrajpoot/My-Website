@@ -1951,3 +1951,346 @@ body.light-mode #scan-output {
         min-width: 0;
     }
 }
+/* =====================================================
+   CYBER ARCADE
+===================================================== */
+
+.arcade-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.arcade-card {
+    width: 280px;
+    padding: 30px 20px;
+
+    background: rgba(2,15,8,.9);
+
+    border: 1px solid #14532d;
+    border-radius: 12px;
+
+    text-align: center;
+
+    transition: .3s;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.arcade-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 2px;
+
+    background: #22c55e;
+
+    box-shadow: 0 0 15px #22c55e;
+
+    animation: arcadeScan 3s linear infinite;
+}
+
+@keyframes arcadeScan {
+
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+
+}
+
+.arcade-card:hover {
+    transform: translateY(-10px) scale(1.02);
+
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 20px rgba(34,197,94,.25),
+        0 0 50px rgba(34,197,94,.08);
+}
+
+.arcade-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+
+    filter:
+        drop-shadow(0 0 8px #22c55e);
+}
+
+.arcade-card h3 {
+    color: #4ade80;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 8px rgba(34,197,94,.5);
+}
+
+.arcade-card p {
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+.arcade-card button {
+    padding: 11px 22px;
+
+    border: 1px solid #22c55e;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #4ade80;
+
+    font-family: inherit;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.arcade-card button:hover {
+    background: #22c55e;
+
+    color: #020b05;
+
+    box-shadow:
+        0 0 20px #22c55e;
+}
+
+
+/* ================= GAME SCREEN ================= */
+
+.arcade-game {
+
+    width: 90%;
+    max-width: 650px;
+
+    min-height: 180px;
+
+    margin: 40px auto 0;
+
+    padding: 30px;
+
+    background: rgba(1,10,5,.95);
+
+    border: 1px solid #22c55e;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 25px rgba(34,197,94,.15);
+
+    text-align: center;
+}
+
+#arcadeTitle {
+
+    color: #22c55e;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px #22c55e;
+}
+
+#arcadeMessage {
+
+    color: #86efac;
+
+    margin-bottom: 20px;
+}
+
+
+/* Arcade Inputs */
+
+#arcadeControls input {
+
+    padding: 12px;
+
+    width: 180px;
+
+    background: #010904;
+
+    border: 1px solid #14532d;
+
+    border-radius: 5px;
+
+    color: #4ade80;
+
+    font-family: inherit;
+
+    outline: none;
+
+    text-align: center;
+}
+
+#arcadeControls input:focus {
+
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 12px rgba(34,197,94,.3);
+}
+
+
+/* Arcade Buttons */
+
+#arcadeControls button {
+
+    padding: 11px 20px;
+
+    margin: 5px;
+
+    border: 1px solid #22c55e;
+
+    border-radius: 5px;
+
+    background: #22c55e;
+
+    color: #020b05;
+
+    font-family: inherit;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+#arcadeControls button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px #22c55e;
+}
+
+
+/* Reaction Game */
+
+.reaction-box {
+
+    width: 100%;
+    height: 120px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 20px;
+
+    border: 1px solid #14532d;
+
+    border-radius: 8px;
+
+    background: #061b0d;
+
+    color: #4ade80;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.reaction-box.ready {
+
+    background: #7f1d1d;
+
+    color: #fecaca;
+}
+
+.reaction-box.go {
+
+    background: #22c55e;
+
+    color: #020b05;
+
+    box-shadow:
+        0 0 30px #22c55e;
+}
+
+
+/* Memory Buttons */
+
+.memory-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+.memory-button {
+
+    width: 60px;
+    height: 60px;
+
+    border: 1px solid #22c55e;
+
+    background: #061b0d;
+
+    color: #4ade80;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.memory-button.active {
+
+    background: #22c55e;
+
+    color: #020b05;
+
+    box-shadow:
+        0 0 20px #22c55e;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .arcade-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .arcade-game {
+        width: 95%;
+        padding: 22px 15px;
+    }
+
+}
