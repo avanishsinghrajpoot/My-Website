@@ -1412,3 +1412,288 @@ if (terminalInput) {
     });
 
 }
+/* =====================================================
+   CYBER ARCADE
+===================================================== */
+
+/* ================= NUMBER HACK ================= */
+
+let secretNumber = 0;
+let guessAttempts = 0;
+
+function startGuessGame() {
+
+    secretNumber = Math.floor(Math.random() * 100) + 1;
+    guessAttempts = 0;
+
+    document.getElementById("arcadeTitle").textContent =
+        "🎯 NUMBER HACK";
+
+    document.getElementById("arcadeMessage").textContent =
+        "SYSTEM: Secret number generated. Find it!";
+
+    document.getElementById("arcadeControls").innerHTML = `
+        <input
+            type="number"
+            id="guessInput"
+            min="1"
+            max="100"
+            placeholder="1 - 100"
+        >
+
+        <button onclick="checkGuess()">
+            [ HACK ]
+        </button>
+
+        <p id="guessResult"></p>
+    `;
+}
+
+
+function checkGuess() {
+
+    const input = document.getElementById("guessInput");
+    const result = document.getElementById("guessResult");
+
+    const guess = Number(input.value);
+
+    if (!guess || guess < 1 || guess > 100) {
+
+        result.textContent =
+            "⚠ Enter a number between 1 and 100.";
+
+        return;
+    }
+
+    guessAttempts++;
+
+    if (guess === secretNumber) {
+
+        result.textContent =
+            `✓ ACCESS GRANTED! Number: ${secretNumber} | Attempts: ${guessAttempts}`;
+
+    } else if (guess < secretNumber) {
+
+        result.textContent =
+            "⬆ TOO LOW — increase your number.";
+
+    } else {
+
+        result.textContent =
+            "⬇ TOO HIGH — decrease your number.";
+    }
+}
+
+
+/* ================= MEMORY HACK ================= */
+
+let memorySequence = [];
+let playerSequence = [];
+
+function startMemoryGame() {
+
+    memorySequence = [];
+    playerSequence = [];
+
+    document.getElementById("arcadeTitle").textContent =
+        "🧠 MEMORY HACK";
+
+    document.getElementById("arcadeMessage").textContent =
+        "SYSTEM: Watch the sequence...";
+
+    document.getElementById("arcadeControls").innerHTML = `
+        <div class="memory-buttons">
+
+            <button class="memory-button" onclick="memoryClick(1)">1</button>
+            <button class="memory-button" onclick="memoryClick(2)">2</button>
+            <button class="memory-button" onclick="memoryClick(3)">3</button>
+            <button class="memory-button" onclick="memoryClick(4)">4</button>
+
+        </div>
+
+        <p id="memoryResult"></p>
+    `;
+
+    setTimeout(nextMemoryRound, 500);
+}
+
+
+function nextMemoryRound() {
+
+    playerSequence = [];
+
+    const randomNumber =
+        Math.floor(Math.random() * 4) + 1;
+
+    memorySequence.push(randomNumber);
+
+    document.getElementById("arcadeMessage").textContent =
+        "MEMORIZE THE SEQUENCE...";
+
+    showMemorySequence();
+}
+
+
+function showMemorySequence() {
+
+    let index = 0;
+
+    const buttons =
+        document.querySelectorAll(".memory-button");
+
+    const timer =
+        setInterval(() => {
+
+            buttons.forEach(button =>
+                button.classList.remove("active")
+            );
+
+            if (index >= memorySequence.length) {
+
+                clearInterval(timer);
+
+                document.getElementById("arcadeMessage").textContent =
+                    "YOUR TURN → Repeat the sequence";
+
+                return;
+            }
+
+            const number =
+                memorySequence[index];
+
+            buttons[number - 1].classList.add("active");
+
+            setTimeout(() => {
+
+                buttons[number - 1]
+                    .classList.remove("active");
+
+            }, 350);
+
+            index++;
+
+        }, 600);
+}
+
+
+function memoryClick(number) {
+
+    playerSequence.push(number);
+
+    const currentIndex =
+        playerSequence.length - 1;
+
+    if (
+        playerSequence[currentIndex] !==
+        memorySequence[currentIndex]
+    ) {
+
+        document.getElementById("memoryResult").textContent =
+            `❌ SYSTEM FAILURE — Level reached: ${memorySequence.length - 1}`;
+
+        document.getElementById("arcadeMessage").textContent =
+            "MEMORY HACK FAILED";
+
+        return;
+    }
+
+    if (
+        playerSequence.length ===
+        memorySequence.length
+    ) {
+
+        document.getElementById("memoryResult").textContent =
+            "✓ CORRECT! Loading next level...";
+
+        setTimeout(nextMemoryRound, 800);
+    }
+}
+
+
+/* ================= REACTION TEST ================= */
+
+let reactionStartTime = 0;
+let reactionTimer = null;
+
+function startReactionGame() {
+
+    document.getElementById("arcadeTitle").textContent =
+        "⚡ REACTION TEST";
+
+    document.getElementById("arcadeMessage").textContent =
+        "SYSTEM: Wait for GREEN...";
+
+    document.getElementById("arcadeControls").innerHTML = `
+
+        <div
+            id="reactionBox"
+            class="reaction-box ready"
+            onclick="reactionClick()">
+
+            WAIT...
+
+        </div>
+
+        <p id="reactionResult"></p>
+    `;
+
+    const delay =
+        Math.floor(Math.random() * 3000) + 2000;
+
+    reactionTimer = setTimeout(() => {
+
+        const box =
+            document.getElementById("reactionBox");
+
+        if (!box) return;
+
+        box.classList.remove("ready");
+        box.classList.add("go");
+
+        box.textContent =
+            "⚡ CLICK NOW!";
+
+        reactionStartTime =
+            performance.now();
+
+    }, delay);
+}
+
+
+function reactionClick() {
+
+    const box =
+        document.getElementById("reactionBox");
+
+    const result =
+        document.getElementById("reactionResult");
+
+    if (!box) return;
+
+    if (box.classList.contains("ready")) {
+
+        clearTimeout(reactionTimer);
+
+        result.textContent =
+            "❌ TOO EARLY! Don't cheat 😈";
+
+        box.textContent =
+            "FAILED";
+
+        return;
+    }
+
+    const reactionTime =
+        Math.round(
+            performance.now() -
+            reactionStartTime
+        );
+
+    result.textContent =
+        `⚡ Your reaction time: ${reactionTime} ms`;
+
+    box.textContent =
+        "✓ SYSTEM HACKED";
+
+    box.onclick = null;
+}
