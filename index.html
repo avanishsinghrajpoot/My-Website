@@ -52,6 +52,7 @@
             <a href="#calculator">CALCULATOR</a>
             <a href="#terminal">TERMINAL</a>
             <a href="#game">GAME</a>
+            <a href="#arcade">ARCADE</a>
             <a href="#contact">CONTACT</a>
 
         </div>
@@ -777,7 +778,95 @@
 
     </section>
 
+<!-- ================= CYBER ARCADE ================= -->
 
+<section id="arcade" class="section">
+
+    <div class="section-header">
+        <span>&gt;_</span>
+        CYBER_ARCADE
+    </div>
+
+    <p class="section-subtitle">
+        // select_your_mission
+    </p>
+
+    <div class="arcade-container">
+
+        <!-- NUMBER GUESS -->
+        <div class="arcade-card">
+
+            <div class="arcade-icon">🎯</div>
+
+            <h3>NUMBER HACK</h3>
+
+            <p>
+                Guess the secret number between 1 and 100.
+            </p>
+
+            <button onclick="startGuessGame()">
+                [ START ]
+            </button>
+
+        </div>
+
+
+        <!-- MEMORY GAME -->
+        <div class="arcade-card">
+
+            <div class="arcade-icon">🧠</div>
+
+            <h3>MEMORY HACK</h3>
+
+            <p>
+                Remember the sequence and repeat it.
+            </p>
+
+            <button onclick="startMemoryGame()">
+                [ START ]
+            </button>
+
+        </div>
+
+
+        <!-- REACTION GAME -->
+        <div class="arcade-card">
+
+            <div class="arcade-icon">⚡</div>
+
+            <h3>REACTION TEST</h3>
+
+            <p>
+                Test how fast your reaction is.
+            </p>
+
+            <button onclick="startReactionGame()">
+                [ START ]
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME AREA -->
+
+    <div id="arcadeGame" class="arcade-game">
+
+        <div id="arcadeTitle">
+            CYBER ARCADE
+        </div>
+
+        <p id="arcadeMessage">
+            Select a mission above...
+        </p>
+
+        <div id="arcadeControls"></div>
+
+    </div>
+
+</section>
+    
     <!-- ================= CONTACT ================= -->
 
     <section id="contact" class="section">
