@@ -1,0 +1,1143 @@
+/* =====================================================
+   AVANISH SINGH CYBER PORTFOLIO
+   STYLE.CSS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #020b05;
+    color: #b7f7c5;
+    font-family: "Courier New", monospace;
+    overflow-x: hidden;
+}
+
+body.light-mode {
+    background: #e9fff0;
+    color: #063b16;
+}
+
+
+/* ================= MATRIX ================= */
+
+#matrixCanvas {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -5;
+    opacity: 0.18;
+}
+
+.scanlines {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 50;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(34, 197, 94, 0.025) 4px
+        );
+}
+
+
+/* ================= CURSOR ================= */
+
+#cursorGlow {
+    position: fixed;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,0.15),
+            transparent 70%
+        );
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+}
+
+
+/* ================= NAV ================= */
+
+nav {
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+
+    min-height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 5%;
+
+    border-bottom: 1px solid #22c55e;
+
+    background: rgba(1, 10, 5, 0.94);
+
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    color: #22c55e;
+    margin-right: auto;
+
+    text-shadow:
+        0 0 10px #22c55e;
+}
+
+.logo span {
+    color: #86efac;
+}
+
+.nav-links {
+    display: flex;
+    gap: 14px;
+}
+
+.nav-links a {
+    color: #86efac;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    text-shadow:
+        0 0 10px #22c55e;
+}
+
+.menu-btn,
+.theme-btn {
+    background: transparent;
+    border: 1px solid #22c55e;
+
+    color: #22c55e;
+
+    cursor: pointer;
+
+    border-radius: 8px;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 22px;
+    padding: 8px 12px;
+}
+
+.theme-btn {
+    margin-left: 15px;
+    padding: 8px 12px;
+    font-size: 18px;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 20px;
+}
+
+.hero-terminal,
+.hacker-terminal {
+    width: min(900px, 94%);
+
+    border: 1px solid #22c55e;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    background:
+        rgba(0, 12, 5, 0.92);
+
+    box-shadow:
+        0 0 30px rgba(34,197,94,0.2);
+}
+
+.terminal-top,
+.terminal-header {
+    padding: 15px 20px;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    border-bottom: 1px solid #14532d;
+
+    color: #22c55e;
+}
+
+.terminal-top strong,
+.terminal-header b {
+    margin-left: 15px;
+}
+
+.terminal-content {
+    padding: 45px;
+}
+
+.terminal-line {
+    color: #86efac;
+    margin: 10px 0;
+}
+
+.success {
+    color: #22c55e;
+    margin: 20px 0;
+}
+
+.status {
+    color: #aaa;
+}
+
+.status span {
+    color: #22c55e;
+}
+
+.hero h1 {
+    margin-top: 35px;
+    font-size: clamp(35px, 7vw, 65px);
+}
+
+.hero h1 span {
+    color: #22c55e;
+
+    text-shadow:
+        0 0 15px #22c55e;
+}
+
+.hero h2 {
+    color: #22c55e;
+    margin-top: 20px;
+}
+
+.hero-text {
+    max-width: 650px;
+    margin: 25px 0;
+
+    color: #9ca3af;
+
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn,
+button {
+    font-family: inherit;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 14px 22px;
+
+    border: 1px solid #22c55e;
+    border-radius: 8px;
+
+    color: #22c55e;
+
+    text-decoration: none;
+
+    background: rgba(34,197,94,0.05);
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.btn:hover,
+button:hover {
+    background: #22c55e;
+    color: #001b08;
+
+    box-shadow:
+        0 0 20px rgba(34,197,94,0.5);
+}
+
+.btn-outline {
+    background: transparent;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.section {
+    padding: 90px 5%;
+    min-height: 400px;
+}
+
+.section-header {
+    color: #22c55e;
+
+    font-size: clamp(24px, 5vw, 38px);
+
+    text-align: center;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 12px #22c55e;
+}
+
+.section-header span {
+    color: #86efac;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #6ee7b7;
+
+    margin-bottom: 35px;
+}
+
+
+/* ================= ABOUT ================= */
+
+.about-box,
+.clock-box,
+.game-box,
+.system-box,
+.arcade-game,
+.snake-box {
+    max-width: 850px;
+    margin: auto;
+
+    padding: 30px;
+
+    border: 1px solid #22c55e;
+    border-radius: 18px;
+
+    background:
+        rgba(0, 15, 7, 0.85);
+
+    box-shadow:
+        0 0 25px rgba(34,197,94,0.12);
+}
+
+.about-box h3 {
+    color: #22c55e;
+    margin: 15px 0;
+}
+
+.about-box p {
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+.code-comment {
+    color: #4ade80;
+}
+
+
+/* ================= CLOCK ================= */
+
+.clock-box {
+    text-align: center;
+}
+
+.clock-label {
+    color: #6ee7b7;
+}
+
+#clock-time {
+    color: #22c55e;
+
+    font-size: clamp(45px, 10vw, 90px);
+
+    margin: 15px 0;
+
+    text-shadow:
+        0 0 20px #22c55e;
+}
+
+#clock-date {
+    color: #86efac;
+}
+
+
+/* ================= SKILLS ================= */
+
+.skills-container,
+.projects-container,
+.arcade-container {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.skill-card,
+.project-card,
+.arcade-card {
+    padding: 25px;
+
+    border: 1px solid #166534;
+
+    border-radius: 15px;
+
+    background:
+        rgba(0, 15, 7, 0.8);
+
+    transition: 0.3s;
+}
+
+.skill-card:hover,
+.project-card:hover,
+.arcade-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 20px rgba(34,197,94,0.2);
+}
+
+.icon,
+.project-number,
+.arcade-icon {
+    color: #22c55e;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.skill-card h3,
+.project-card h3,
+.arcade-card h3 {
+    color: #86efac;
+    margin-bottom: 12px;
+}
+
+.skill-card p,
+.project-card p,
+.arcade-card p {
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.skill-bar {
+    height: 8px;
+
+    margin-top: 20px;
+
+    background: #052e16;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 10px #22c55e;
+}
+
+.html-progress {
+    width: 90%;
+}
+
+.css-progress {
+    width: 80%;
+}
+
+.js-progress {
+    width: 70%;
+}
+
+.problem-progress {
+    width: 75%;
+}
+
+
+/* ================= PROJECTS ================= */
+
+.project-card button,
+.arcade-card button,
+.game-buttons button {
+    margin-top: 18px;
+
+    padding: 10px 18px;
+
+    background: transparent;
+
+    border: 1px solid #22c55e;
+
+    color: #22c55e;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* ================= CALCULATOR ================= */
+
+.calculator {
+    width: min(360px, 95%);
+    margin: auto;
+
+    padding: 20px;
+
+    border: 1px solid #22c55e;
+    border-radius: 15px;
+
+    background: #020b05;
+
+    box-shadow:
+        0 0 25px rgba(34,197,94,0.2);
+}
+
+.calculator-title {
+    color: #22c55e;
+    margin-bottom: 12px;
+}
+
+.calculator-display {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-bottom: 12px;
+
+    background: #001b08;
+
+    border: 1px solid #166534;
+
+    color: #86efac;
+
+    font-size: 25px;
+
+    text-align: right;
+}
+
+.calculator-buttons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+}
+
+.calculator-buttons button {
+    padding: 17px;
+
+    background: #031a0b;
+
+    color: #86efac;
+
+    border: 1px solid #166534;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.calculator-buttons .zero {
+    grid-column: span 2;
+}
+
+.calculator-buttons .equal {
+    background: #22c55e;
+    color: #001b08;
+}
+
+
+/* ================= TERMINAL ================= */
+
+.terminal-body {
+    min-height: 300px;
+
+    max-height: 450px;
+
+    overflow-y: auto;
+
+    padding: 20px;
+
+    line-height: 1.7;
+}
+
+.green {
+    color: #22c55e;
+}
+
+.white {
+    color: white;
+}
+
+.terminal-output {
+    color: #86efac;
+    margin: 8px 0 15px;
+}
+
+.terminal-command {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.terminal-input {
+    flex: 1;
+
+    background: transparent;
+
+    border: none;
+    outline: none;
+
+    color: #fff;
+
+    font-family: inherit;
+}
+
+
+/* ================= SYSTEM SCAN ================= */
+
+.system-box {
+    max-width: 850px;
+}
+
+.system-header {
+    display: flex;
+    justify-content: space-between;
+
+    color: #22c55e;
+
+    margin-bottom: 30px;
+}
+
+.system-status {
+    color: #4ade80;
+}
+
+.scan-line {
+    display: grid;
+
+    grid-template-columns: 100px 1fr 55px;
+
+    gap: 10px;
+
+    align-items: center;
+
+    margin: 20px 0;
+}
+
+.scan-bar {
+    height: 10px;
+
+    background: #052e16;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.scan-progress {
+    width: 0%;
+    height: 100%;
+
+    background: #22c55e;
+
+    transition: width 0.7s;
+}
+
+#scan-output {
+    margin: 30px 0;
+
+    max-height: 180px;
+
+    overflow-y: auto;
+
+    color: #86efac;
+}
+
+.scan-success {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+
+/* ================= RPS ================= */
+
+.game-box {
+    text-align: center;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin: 25px 0;
+}
+
+
+/* ================= ARCADE ================= */
+
+.arcade-container {
+    margin-bottom: 35px;
+}
+
+.arcade-card {
+    text-align: center;
+}
+
+.arcade-icon {
+    font-size: 40px;
+}
+
+.arcade-game {
+    text-align: center;
+    min-height: 160px;
+}
+
+.arcade-game h2 {
+    color: #22c55e;
+}
+
+#arcadeMessage {
+    margin: 20px 0;
+    color: #86efac;
+}
+
+#arcadeControls input {
+    padding: 12px;
+
+    background: #001b08;
+
+    border: 1px solid #22c55e;
+
+    color: white;
+
+    outline: none;
+}
+
+#arcadeControls button {
+    padding: 12px 18px;
+
+    background: transparent;
+
+    color: #22c55e;
+
+    border: 1px solid #22c55e;
+
+    cursor: pointer;
+}
+
+.memory-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 20px;
+}
+
+.memory-button {
+    width: 60px;
+    height: 60px;
+
+    font-size: 20px;
+}
+
+.memory-button.active {
+    background: #22c55e !important;
+    color: #001b08 !important;
+
+    box-shadow:
+        0 0 25px #22c55e;
+}
+
+.reaction-box {
+    max-width: 350px;
+
+    margin: 20px auto;
+
+    padding: 45px 20px;
+
+    border: 2px solid #22c55e;
+
+    cursor: pointer;
+
+    font-size: 22px;
+}
+
+.reaction-box.ready {
+    color: #facc15;
+}
+
+.reaction-box.go {
+    background: #22c55e;
+
+    color: #001b08;
+
+    box-shadow:
+        0 0 30px #22c55e;
+}
+
+
+/* ================= SNAKE ================= */
+
+.snake-box {
+    max-width: 550px;
+
+    text-align: center;
+}
+
+.snake-box h2 {
+    color: #22c55e;
+
+    font-size: 30px;
+
+    text-shadow:
+        0 0 12px #22c55e;
+}
+
+#snakeStatus {
+    color: #86efac;
+
+    margin: 20px 0;
+}
+
+.snake-score {
+    color: #4ade80;
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+}
+
+#snakeScore {
+    color: white;
+}
+
+#snakeCanvas {
+    display: block;
+
+    width: 320px;
+    height: 320px;
+
+    max-width: 100%;
+
+    margin: 20px auto;
+
+    background: #020b05;
+
+    border: 2px solid #22c55e;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 25px rgba(34,197,94,0.4);
+}
+
+.snake-controls {
+    color: #86efac;
+
+    margin-top: 18px;
+}
+
+
+/* ================= CONTACT ================= */
+
+form {
+    max-width: 700px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #22c55e;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    background: #001b08;
+
+    border: 1px solid #166534;
+
+    color: white;
+
+    outline: none;
+
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 12px rgba(34,197,94,0.2);
+}
+
+.submit-btn {
+    padding: 14px 20px;
+
+    border: 1px solid #22c55e;
+
+    background: transparent;
+
+    color: #22c55e;
+
+    cursor: pointer;
+}
+
+#formMessage {
+    margin-top: 15px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #14532d;
+
+    color: #86efac;
+}
+
+footer h3 {
+    color: #22c55e;
+}
+
+.social-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    margin: 20px 0;
+}
+
+.social-links a {
+    color: #22c55e;
+
+    font-size: 25px;
+
+    transition: 0.2s;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+
+    text-shadow:
+        0 0 15px #22c55e;
+}
+
+
+/* ================= TOP BUTTON ================= */
+
+#topBtn {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    border: 2px solid #22c55e;
+
+    background: #020b05;
+
+    color: #22c55e;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+
+    z-index: 90;
+}
+
+#topBtn.show {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        min-height: 75px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .logo {
+        margin: auto;
+        font-size: 20px;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        top: 75px;
+        left: 0;
+        right: 0;
+
+        display: none;
+
+        flex-direction: column;
+
+        padding: 20px;
+
+        background: rgba(0, 10, 4, 0.98);
+
+        border-bottom: 1px solid #22c55e;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 40px 10px;
+    }
+
+    .terminal-content {
+        padding: 25px 18px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .section {
+        padding: 65px 15px;
+    }
+
+    .scan-line {
+        grid-template-columns: 80px 1fr 45px;
+
+        font-size: 12px;
+    }
+
+    #snakeCanvas {
+        width: min(320px, 90vw);
+        height: min(320px, 90vw);
+    }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 450px) {
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .theme-btn {
+        padding: 7px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero h2 {
+        font-size: 18px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        text-align: center;
+    }
+
+    .calculator {
+        width: 100%;
+    }
+
+    .calculator-buttons button {
+        padding: 14px;
+    }
+
+}
