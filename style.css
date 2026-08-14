@@ -1286,19 +1286,6 @@ footer h3 {
 
 @media (max-width: 600px) {
 
-    .tic-box {
-        margin: 20px 10px;
-        padding: 25px 15px;
-    }
-
-    .tic-board {
-        width: min(85vw, 300px);
-        gap: 6px;
-    }
-
-}
-@media (max-width: 600px) {
-
     .tic-tac-toe-board {
         width: 82%;
         max-width: 330px;
