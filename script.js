@@ -2092,3 +2092,360 @@ console.log(
     "%c Type 'help' in Hacker Terminal ",
     "color:#86efac;font-size:13px;"
 );
+/* =====================================================
+   CYBER TIC TAC TOE
+===================================================== */
+
+const ticCells =
+    document.querySelectorAll(".tic-cell");
+
+const ticStatus =
+    document.getElementById("ticStatus");
+
+const ticScore =
+    document.getElementById("ticScore");
+
+let ticBoard = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+];
+
+let ticGameOver = false;
+
+let ticPlayerScore = 0;
+let ticComputerScore = 0;
+let ticDrawScore = 0;
+
+const ticWinningCombinations = [
+
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+
+    [0, 4, 8],
+    [2, 4, 6]
+
+];
+
+
+/* PLAYER MOVE */
+
+ticCells.forEach(cell => {
+
+    cell.addEventListener("click", () => {
+
+        const index =
+            Number(cell.dataset.index);
+
+        if (
+            ticBoard[index] !== "" ||
+            ticGameOver
+        ) {
+            return;
+        }
+
+        ticBoard[index] = "X";
+
+        cell.textContent = "X";
+        cell.classList.add("x");
+
+        const result =
+            checkTicWinner();
+
+        if (result) {
+            finishTicGame(result);
+            return;
+        }
+
+        ticStatus.textContent =
+            "COMPUTER THINKING... 🤖";
+
+        setTimeout(computerTicMove, 500);
+
+    });
+
+});
+
+
+/* COMPUTER MOVE */
+
+function computerTicMove() {
+
+    if (ticGameOver) return;
+
+    const emptyCells = [];
+
+    ticBoard.forEach((value, index) => {
+
+        if (value === "") {
+            emptyCells.push(index);
+        }
+
+    });
+
+    if (emptyCells.length === 0) return;
+
+    /*
+     * Computer tries to win
+     */
+
+    let move =
+        findWinningMove("O");
+
+    /*
+     * Otherwise block player
+     */
+
+    if (move === -1) {
+        move = findWinningMove("X");
+    }
+
+    /*
+     * Otherwise take center
+     */
+
+    if (
+        move === -1 &&
+        ticBoard[4] === ""
+    ) {
+        move = 4;
+    }
+
+    /*
+     * Otherwise random move
+     */
+
+    if (move === -1) {
+
+        move =
+            emptyCells[
+                Math.floor(
+                    Math.random() *
+                    emptyCells.length
+                )
+            ];
+
+    }
+
+    ticBoard[move] = "O";
+
+    const cell =
+        document.querySelector(
+            `.tic-cell[data-index="${move}"]`
+        );
+
+    if (cell) {
+
+        cell.textContent = "O";
+        cell.classList.add("o");
+
+    }
+
+    const result =
+        checkTicWinner();
+
+    if (result) {
+
+        finishTicGame(result);
+
+    } else {
+
+        ticStatus.textContent =
+            "YOUR TURN — SELECT A CELL";
+
+    }
+
+}
+
+
+/* FIND WINNING MOVE */
+
+function findWinningMove(player) {
+
+    for (
+        const combination
+        of ticWinningCombinations
+    ) {
+
+        const values =
+            combination.map(
+                index => ticBoard[index]
+            );
+
+        const playerCount =
+            values.filter(
+                value => value === player
+            ).length;
+
+        const emptyIndex =
+            combination.find(
+                index => ticBoard[index] === ""
+            );
+
+        if (
+            playerCount === 2 &&
+            emptyIndex !== undefined
+        ) {
+
+            return emptyIndex;
+
+        }
+
+    }
+
+    return -1;
+}
+
+
+/* CHECK WINNER */
+
+function checkTicWinner() {
+
+    for (
+        const combination
+        of ticWinningCombinations
+    ) {
+
+        const [a, b, c] =
+            combination;
+
+        if (
+            ticBoard[a] !== "" &&
+            ticBoard[a] === ticBoard[b] &&
+            ticBoard[a] === ticBoard[c]
+        ) {
+
+            return {
+                winner: ticBoard[a],
+                combination: combination
+            };
+
+        }
+
+    }
+
+    if (
+        ticBoard.every(
+            cell => cell !== ""
+        )
+    ) {
+
+        return {
+            winner: "DRAW",
+            combination: []
+        };
+
+    }
+
+    return null;
+}
+
+
+/* FINISH GAME */
+
+function finishTicGame(result) {
+
+    ticGameOver = true;
+
+    if (result.winner === "X") {
+
+        ticPlayerScore++;
+
+        ticStatus.textContent =
+            "🎉 YOU WIN — ACCESS GRANTED!";
+
+    }
+
+    else if (result.winner === "O") {
+
+        ticComputerScore++;
+
+        ticStatus.textContent =
+            "🤖 COMPUTER WINS — SYSTEM OVERRIDE!";
+
+    }
+
+    else {
+
+        ticDrawScore++;
+
+        ticStatus.textContent =
+            "🤝 DRAW — SYSTEM STALEMATE!";
+
+    }
+
+    result.combination.forEach(index => {
+
+        const cell =
+            document.querySelector(
+                `.tic-cell[data-index="${index}"]`
+            );
+
+        if (cell) {
+            cell.classList.add("win");
+        }
+
+    });
+
+    updateTicScore();
+
+}
+
+
+/* UPDATE SCORE */
+
+function updateTicScore() {
+
+    ticScore.textContent =
+        `YOU: ${ticPlayerScore} | ` +
+        `COMPUTER: ${ticComputerScore} | ` +
+        `DRAW: ${ticDrawScore}`;
+
+}
+
+
+/* RESET */
+
+function resetTicTacToe() {
+
+    ticBoard = [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ];
+
+    ticGameOver = false;
+
+    ticCells.forEach(cell => {
+
+        cell.textContent = "";
+
+        cell.classList.remove(
+            "x",
+            "o",
+            "win"
+        );
+
+    });
+
+    ticStatus.textContent =
+        "SYSTEM READY — YOUR TURN";
+
+}
