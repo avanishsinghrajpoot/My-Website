@@ -1297,3 +1297,22 @@ footer h3 {
     }
 
 }
+@media (max-width: 600px) {
+
+    .tic-tac-toe-board {
+        width: 82%;
+        max-width: 330px;
+        gap: 8px;
+    }
+
+    .tic-tac-toe-board button {
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: 1 / 1;
+
+        border-width: 2px;
+        border-radius: 14px;
+        font-size: 30px;
+    }
+
+}
