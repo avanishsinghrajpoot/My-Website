@@ -1297,9 +1297,9 @@ footer h3 {
         max-height: none;
         aspect-ratio: 1 / 1;
 
-        border-width: 2px;
-        border-radius: 14px;
-        font-size: 30px;
+        border-width: 1px;
+        border-radius: 11px;
+        font-size: 20px;
     }
 
 }
