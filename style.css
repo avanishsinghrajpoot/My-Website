@@ -1173,159 +1173,359 @@ footer h3 {
 }
 
 /* =====================================================
-   CYBER TIC TAC TOE
+   CYBER TIC TAC TOE - MOBILE FIX
 ===================================================== */
 
 #tic-tac-toe {
-    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-/* Game container */
+/* Main game box */
 .tic-tac-toe-box {
-    width: 100%;
+    width: calc(100% - 30px);
     max-width: 500px;
     margin: 20px auto;
-    padding: 25px 15px;
+    padding: 25px 10px;
     box-sizing: border-box;
 
-    background: rgba(0, 15, 8, 0.88);
+    background: rgba(0, 15, 8, 0.9);
+
     border: 2px solid #22ff7e;
     border-radius: 25px;
 
+    overflow: hidden;
+
     box-shadow:
-        0 0 10px rgba(34, 255, 126, 0.4),
+        0 0 15px rgba(34, 255, 126, 0.35),
         inset 0 0 25px rgba(34, 255, 126, 0.08);
 }
 
-/* Title */
+
+/* =====================================================
+   TITLE
+===================================================== */
+
 .tic-title {
+    text-align: center;
+
     color: #22ff7e;
-    font-size: 32px;
-    margin-bottom: 10px;
+
+    font-size: 30px;
+
+    line-height: 1.3;
+
+    margin: 5px 0 15px;
 
     text-shadow:
         0 0 5px #22ff7e,
         0 0 15px #22ff7e;
 }
 
-/* Status text */
+
+/* STATUS */
+
 #tic-status {
+    text-align: center;
+
     color: #b7ffd1;
-    font-size: 18px;
-    margin: 15px 0 20px;
+
+    font-size: 16px;
+
+    margin: 10px 0 20px;
 }
 
-/* ================= BOARD ================= */
+
+/* =====================================================
+   BOARD
+===================================================== */
 
 .tic-board {
+
+    /* IMPORTANT */
+    width: 100%;
+    max-width: 300px;
+
+    margin: 20px auto;
+
     display: grid;
 
-    grid-template-columns: repeat(3, 70px);
-    grid-template-rows: repeat(3, 70px);
+    grid-template-columns: repeat(3, 1fr);
 
-    gap: 10px;
+    grid-template-rows: repeat(3, 1fr);
 
-    width: max-content;
-    margin: 20px auto;
+    gap: 8px;
+
+    box-sizing: border-box;
 }
 
-/* Individual box */
+
+/* =====================================================
+   CELLS
+===================================================== */
+
 .tic-cell {
-    width: 70px;
-    height: 70px;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    min-width: 0;
 
     padding: 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
 
     background: rgba(0, 20, 10, 0.9);
 
     border: 2px solid #22ff7e;
+
     border-radius: 10px;
 
     color: #22ff7e;
 
     font-family: monospace;
-    font-size: 28px;
+
+    font-size: 30px;
+
     font-weight: bold;
 
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-
-    transition:
-        transform 0.15s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: 0.2s;
 }
 
+
 /* Hover */
+
 .tic-cell:hover {
+
     background: rgba(34, 255, 126, 0.12);
 
     box-shadow:
-        0 0 8px #22ff7e,
-        0 0 18px rgba(34, 255, 126, 0.4);
+        0 0 10px #22ff7e,
+        0 0 20px rgba(34, 255, 126, 0.3);
 
-    transform: scale(1.04);
 }
+
 
 /* Click */
+
 .tic-cell:active {
-    transform: scale(0.96);
+
+    transform: scale(0.95);
+
 }
 
+
 /* X */
+
 .tic-cell.x {
+
     color: #22ff7e;
 
     text-shadow:
         0 0 5px #22ff7e,
-        0 0 15px #22ff7e,
-        0 0 25px #22ff7e;
+        0 0 15px #22ff7e;
 }
 
+
 /* O */
+
 .tic-cell.o {
+
     color: #00d9ff;
 
     text-shadow:
         0 0 5px #00d9ff,
-        0 0 15px #00d9ff,
-        0 0 25px #00d9ff;
+        0 0 15px #00d9ff;
 }
 
-/* Winning boxes */
+
+/* Winning cells */
+
 .tic-cell.win {
+
     background: rgba(34, 255, 126, 0.25);
 
     box-shadow:
         0 0 10px #22ff7e,
-        0 0 25px #22ff7e,
-        0 0 40px rgba(34, 255, 126, 0.5);
+        0 0 25px #22ff7e;
 
     animation: ticWin 0.6s infinite alternate;
 }
+
 
 @keyframes ticWin {
 
     from {
         box-shadow:
-            0 0 5px #22ff7e,
-            0 0 15px #22ff7e;
+            0 0 5px #22ff7e;
     }
 
     to {
         box-shadow:
-            0 0 15px #22ff7e,
-            0 0 35px #22ff7e;
+            0 0 25px #22ff7e,
+            0 0 40px #22ff7e;
     }
+
 }
 
-/* Score */
+
+/* =====================================================
+   SCORE
+===================================================== */
+
 .tic-score {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
     color: #b7ffd1;
-    font-size: 17px;
-    margin: 20px 
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin: 20px auto;
+}
+
+
+/* =====================================================
+   NEW GAME
+===================================================== */
+
+.tic-new-game {
+
+    display: block;
+
+    margin: 15px auto 5px;
+
+    padding: 13px 25px;
+
+    border: 2px solid #22ff7e;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #22ff7e;
+
+    font-family: monospace;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 8px rgba(34, 255, 126, 0.3);
+
+    transition: 0.2s;
+}
+
+
+.tic-new-game:hover {
+
+    background: #22ff7e;
+
+    color: #001b0c;
+
+    box-shadow:
+        0 0 15px #22ff7e,
+        0 0 30px rgba(34, 255, 126, 0.5);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .tic-tac-toe-box {
+
+        width: calc(100% - 20px);
+
+        padding: 25px 8px;
+
+    }
+
+
+    .tic-title {
+
+        font-size: 27px;
+
+    }
+
+
+    #tic-status {
+
+        font-size: 15px;
+
+    }
+
+
+    .tic-board {
+
+        width: 100%;
+
+        max-width: 285px;
+
+        gap: 7px;
+
+    }
+
+
+    .tic-cell {
+
+        font-size: 27px;
+
+        border-radius: 9px;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .tic-board {
+
+        max-width: 250px;
+
+        gap: 6px;
+
+    }
+
+
+    .tic-cell {
+
+        font-size: 24px;
+
+    }
+
+
+    .tic-title {
+
+        font-size: 24px;
+
+    }
+
+}
